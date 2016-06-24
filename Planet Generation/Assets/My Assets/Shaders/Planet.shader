@@ -10,6 +10,7 @@
 		_FalloffPlanet("Falloff Planet", Float) = 5
 		_Transparency("Transparency", Float) = 15
 		_TransparencyPlanet("Transparency Planet", Float) = 1
+		_Weather("Weather Texture (RGB)", 2D) = "black" {}
 	}
 
 	SubShader
@@ -35,6 +36,8 @@
 				uniform float4 _AtmoColor;
 				uniform float _FalloffPlanet;
 				uniform float _TransparencyPlanet;
+
+				uniform sampler2D _Weather;
 
 				struct v2f
 				{
@@ -67,6 +70,7 @@
 
 					float4 color = tex2D(_MainTex, i.texcoord)*_Color;
 					color.rgb = lerp(color.rgb, atmo.rgb, atmo.a);
+					color.rgb += tex2D(_Weather, i.texcoord).rgb / 2;
 
 					return color*dot(_WorldSpaceLightPos0, i.normal);
 				}

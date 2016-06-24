@@ -6,12 +6,18 @@ using PlanetGenerator;
 using LibNoiseGradient = LibNoise.Unity.Gradient;
 using UnityGradient = UnityEngine.Gradient;
 
-public class Tester : MonoBehaviour
+public class TerrainGenerator : MonoBehaviour
 {
-    [Range(1,9)]
-    [SerializeField] private int power = 1;
+    [Range(1, 9)]
+    [SerializeField]
+    private int power = 1;
+
     private int width = 512;
+    public int Width { get { return width; } }
+
     private int height = 256;
+    public int Height { get { return height; } }
+
     [SerializeField]
     private UnityGradient gradient;
 

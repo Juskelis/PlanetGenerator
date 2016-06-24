@@ -2,12 +2,12 @@
 using System.Collections;
 using UnityEditor;
 
-[CustomEditor(typeof(Tester))]
+[CustomEditor(typeof(TerrainGenerator))]
 public class NoiseTweaker : Editor {
 
     public override void OnInspectorGUI()
     {
-        Tester tester = (Tester) target;
+        TerrainGenerator tester = (TerrainGenerator) target;
 
         if (DrawDefaultInspector())
         {
